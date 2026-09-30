@@ -1,4 +1,4 @@
-Feature: Login Functionality
+Feature: Login Functionality for Rahul Shetty ECommerce App
 
 # Happy Path TestCase
   Scenario: Successful Login
