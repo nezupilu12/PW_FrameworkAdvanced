@@ -1,11 +1,13 @@
 Feature: Login Functionality
 
+# Happy Path TestCase
   Scenario: Successful Login
     Given User is on the login page
     When User enters valid Username and Password
     And User clicks on login Button
     Then User should be logged in successfuly
 
+# Negative Tests
   Scenario: Unsuccessful Login with Valid Username and Invalid Password
     Given User is on the login page
     When User enters valid Username and Invalid Password
