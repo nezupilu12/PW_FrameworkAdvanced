@@ -1,12 +1,33 @@
 import { Before, After, AfterStep } from "@cucumber/cucumber";
-import { chromium } from "@playwright/test";
+import { Browser, chromium, firefox, webkit } from "@playwright/test";
 import { CustomWorld } from "./world";
 import { LoginPage } from "../pages/LoginPage";
+import {config} from "../config/config";
 
 Before(async function (this: CustomWorld) {
-    this.browser = await chromium.launch({
-        headless: false
-    });
+    let browser:Browser;
+
+    switch(config.browser.toLowerCase()){
+        case "firefox":
+            browser=await firefox.launch({
+                headless:config.headless
+            });
+            break;
+
+        case "webkit":
+            browser=await webkit.launch({
+                headless:config.headless
+            });
+            break;
+
+        case "chromium":
+            default:
+            browser=await chromium.launch({
+                headless:config.headless
+            });
+            break;
+    }
+    this.browser = browser;
     this.context = await this.browser.newContext();
     this.page = await this.context.newPage();
 
