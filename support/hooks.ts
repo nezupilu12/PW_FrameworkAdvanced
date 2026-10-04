@@ -1,8 +1,10 @@
-import { Before, After, AfterStep } from "@cucumber/cucumber";
+import { Before, After, AfterStep, setDefaultTimeout } from "@cucumber/cucumber";
 import { Browser, chromium, firefox, webkit } from "@playwright/test";
 import { CustomWorld } from "./world";
 import { LoginPage } from "../pages/LoginPage";
 import {config} from "../config/config";
+
+setDefaultTimeout(30000);
 
 Before(async function (this: CustomWorld) {
     let browser:Browser;
